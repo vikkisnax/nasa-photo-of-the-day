@@ -39,6 +39,9 @@
   }
 }
 
+
+
+/* from vid */
 input.inputBox{
   font-size: 20px;
   padding: 5px 1px 4px 8px;
@@ -46,7 +49,6 @@ input.inputBox{
   border: 1px solid #666;
 }
 
-/* from vid */
 .calendarWrap{
   display: inline-block;
   position: relative;

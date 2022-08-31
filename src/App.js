@@ -6,13 +6,13 @@ import "./App.css";
 import axios from "axios";
 import Apod from "./Components/Apod";
 import CalendarComp from "./Components/CalendarComp";
-// import logo192 from "../public/logo192"; 
+// import logoOne from "../public/logo192"; 
 // hopefully we'll learn about this in the next lesson/pt2
 
 function App() {
   const [potd, setPotd] = useState("");
   const [altText, setAltText] = useState("");
-  const [date, setDate] = useState("");       // hold the date info here, not in the CalendarComp child
+  const [date, setDate] = useState("");       // make this to hold the date info here from CalendarComp, not in the CalendarComp child
     console.log('date:', date)
 
 
@@ -36,14 +36,14 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <div className="App-logo"> insert logo </div>
+        <div className="App-logo"> insert logo! </div>
         {/* <img className="logo192" src={logo192}/> */}
           {/* messing around in these divs bc i can't access the public file yet...maybe next lesson/part 2? */}
       </div>
 
       <div className="App-link">link</div>
 
-      {/* give the CC child props to set the date and store the date state/so the child can access and change the date info */}
+      {/* --> give the CC child props so the child can access and change the date state info. we want the date that we select in the calendar we made to change the date of the image. We need to make the date a string and in the format that the image uses -- 'yyyy-MM-dd' */}
       <p>
         Date:
         <CalendarComp setDate={setDate} calendarDate={date}/>

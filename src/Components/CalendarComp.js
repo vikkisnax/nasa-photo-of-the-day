@@ -8,11 +8,10 @@ import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 
 
-//setDate and calendarDate (the date state) are props passed down from App parent to this child. so the child can change and access the date state now. 
+//setDate and calendarDate (the date state) are props passed down from App parent to this child. so that the child can CHANGE and access the date state (which is IN the parent). 
 const CalendarComp = ({setDate, calendarDate})=> {
-    // const [calendar, setCalendar] = useState(''); // DONT put the date state in the child - i moved it to the parent and passed it down
+    //- X - const [calendar, setCalendar] = useState(''); - X - DONT put the date state in the child - i moved it to the parent and passed it *down/here
     // console.log(calendar) //has the current date - not the selected
-
 
     //open close the calendar
     const [open, setOpen] = useState(false)
@@ -23,12 +22,14 @@ const CalendarComp = ({setDate, calendarDate})=> {
     
 
 
-    //set current date on component load. now current date will show in the input (the empty box) since we also reference it below
-    useEffect (()=>{
+    //set current date on component load. now current date will show in the input (the empty box) since we also reference the date below
+    useEffect (
+        ()=>{
         setDate(format(new Date(), 'yyyy-MM-dd'))
         document.addEventListener('keydown', hideOnEscape, true)
         document.addEventListener('click', hideOnClickOutside,true)
-    }, [])
+            }, 
+        [])
     
     //hide dropdown cal on esc press and click
     const hideOnEscape = (e) => {
@@ -36,12 +37,11 @@ const CalendarComp = ({setDate, calendarDate})=> {
             setOpen(false);
         }
     }
-
     //go back under states and make refOne
     const hideOnClickOutside= (e) => {
         // console.log(refOne.current)
         // console.log(e.target) //shows what u clicked
-        // && means if the left is true and the right is true then return true, if not, then return setOpen(false)
+        // && means if the left is true and the right is true then return setOpen(false)
         //if click target isn't clicking the calendar, then close the calendar -- look below at div ref
         if(refOne.current && !refOne.current.contains(e.target)){
             setOpen(false);
@@ -58,11 +58,9 @@ const CalendarComp = ({setDate, calendarDate})=> {
 
     return(
         <div className="calendarWrap">
-
-            {/* value is the calendar state above */}
             <div>
                 <input
-                    // current date will show in the box instead of it being empty. calendarDate is the date state from App
+                    // the value aka the current date/calendarDate from above, will show in the box instead of it being empty. calendarDate is the date state from App
                     value = {calendarDate} 
                     readOnly
                     className="inputBox"
