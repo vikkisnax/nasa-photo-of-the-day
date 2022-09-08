@@ -3,9 +3,20 @@
 import React, {useEffect, useRef, useState} from "react";
 import { Calendar } from "react-date-range";
 import format from 'date-fns/format';
+import styled from "styled-components";
 
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
+
+
+
+// day2: styled comps. i don't want to put more styles here since there's a lot of text 
+const InputBox = styled.input`
+font-size: 20px;
+  padding: 5px 1px 4px 8px;
+  border-radius: 3px;
+  border: 1px solid #666;`;
+
 
 
 //setDate and calendarDate (the date state) are props passed down from App parent to this child. so that the child can CHANGE and access the date state (which is IN the parent). 
@@ -59,7 +70,7 @@ const CalendarComp = ({setDate, calendarDate})=> {
     return(
         <div className="calendarWrap">
             <div>
-                <input
+                <InputBox
                     // the value aka the current date/calendarDate from above, will show in the box instead of it being empty. calendarDate is the date state from App
                     value = {calendarDate} 
                     readOnly

@@ -1,11 +1,12 @@
-.App {
+  /* in App. styled comps named AppCentered */
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 20vmin;
   /* weird so i'm messing with it.. was 40vmin */
-  pointer-events: none;
+  pointer-events: none; 
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,21 +15,25 @@
   }
 }
 
-.App-header {
+
+/* in App. styled comps named AppHeader */
+/* .App-header {
   background-color: #282c34;
-  min-height: 10vh; 
+  min-height: 10vh;  */
   /* was 100vh- im messing around with the presets */
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
+
+/* in App  */
+/* .App-link {
   color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
@@ -40,14 +45,13 @@
 }
 
 
-
 /* from vid */
-input.inputBox{
+/* input.inputBox{
   font-size: 20px;
   padding: 5px 1px 4px 8px;
   border-radius: 3px;
   border: 1px solid #666;
-}
+} */
 
 .calendarWrap{
   display: inline-block;
