@@ -10,15 +10,18 @@ import 'react-date-range/dist/theme/default.css'
 
 
 
-// day2: styled comps. i don't want to put more styles here since there's a lot of text 
+// day2: styled comps. i don't want to put more styles here since there's a lot of text. I want to make box smaller ... 
 const InputBox = styled.input`
-font-size: 20px;
-  padding: 5px 1px 4px 8px;
+font-size: 18px;
+  padding: 2px 1px 4px 8px;
   border-radius: 3px;
-  border: 1px solid #666;`;
+  border: 1px solid #666;
+  width: 125px;
+  `;
 
 
 
+// component
 //setDate and calendarDate (the date state) are props passed down from App parent to this child. so that the child can CHANGE and access the date state (which is IN the parent). 
 const CalendarComp = ({setDate, calendarDate})=> {
     //- X - const [calendar, setCalendar] = useState(''); - X - DONT put the date state in the child - i moved it to the parent and passed it *down/here

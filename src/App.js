@@ -31,19 +31,47 @@ justify-content: center;
 font-size: calc(10px + 2vmin);
 color: white`;
 
-const AppLink = styled.div`
-color: #61dafb`;
+// moved to Apod for the link
+// const AppLink = styled.div`
+// color: #61dafb`;
 
+//adjusted date box by copying and editing AppHeader styles above
+const Date = styled.div`
+min-height: 18vh; 
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center
+`;
 
+//matching the "date" string with title of the image
+const TitleStyle = styled.div`
+    color: #669;
+    font-weight:bold;
+    `
 
+// for page title... look for fonts
+// const PageTitle = styled.header`
+// color: #808080;
+// background-color: #282c34;
+// min-height: 1vh; 
+// display: flex;
+// flex-direction: row;
+// align-items: left;
+// justify-content: left;
+// font-size: calc(10px + 2vmin);
+// padding-left: 25px;`
 
+//component
 function App() {
   const [potd, setPotd] = useState("");
   const [altText, setAltText] = useState("");
   const [date, setDate] = useState("");       // make this to hold the date info here from CalendarComp, not in the CalendarComp child
     console.log('date:', date)
 
-  const [link, setLink] = useState("") // I want the link to update when the pic changes
+  const [link, setLink] = useState(""); // I want the link to update when the pic changes
+
+  const [title, setTitle] =useState(""); // so the title shows in my card. pass title into Apod comp below
 
 
   const effectFn = () => {
@@ -56,43 +84,33 @@ function App() {
           // console.log(altText)
           // setDate(response.data.date); //dont need to do this since it updates on its own daily...
           setLink(response.data.hdurl);
+          setTitle(response.data.title);
       })
       .catch(error =>console.log(error));
     };
-      useEffect(effectFn, [date]); 
+      useEffect(effectFn, [date, link]); 
         //need date state in the [] bc it'll update a lot
 
   
 
   return (
     <AppCentered>
+      {/* Look for fonts */}
+      {/* <PageTitle>NASA's POTD</PageTitle> */}
       <AppHeader>
         <div className="App-logo"> 
-        <DiReact/>
+          <DiReact />
         </div>
-        {/* <img className="logo192" src={logo192}/> */}
-          {/* messing around in these divs bc i can't access the public file yet...maybe next lesson/part 2? */}
       </AppHeader>
-       <AppLink> 
-        <p>
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{textDecoration: 'none'}}
-            >
-              Click Me
-          </a>
-      </p>
-      </AppLink>
+       {/* <AppLink> moved to Apod */}
 
-      {/* --> give the CC child props so the child can access and change the date state info. we want the date that we select in the calendar we made to change the date of the image. We need to make the date a string and in the format that the image uses -- 'yyyy-MM-dd' */}
-      <p>
-        Date:
+      {/* --> give the CalendarComps child props so the child can access and change the date state info. we want the date that we select in the calendar we made to change the date of the image. We need to make the date a string and in the format that the image uses -- 'yyyy-MM-dd' */}
+      <Date>
+       <TitleStyle>Date</TitleStyle>
         <CalendarComp setDate={setDate} calendarDate={date}/>
-      </p>
+      </Date>
       <div className="potd_container">
-        <Apod picture={potd} altText={altText}/>
+        <Apod picture={potd} altText={altText} title={title} link={link}/>
       </div>
         {/* layout of this container/component is in the Apod component*/}
 
