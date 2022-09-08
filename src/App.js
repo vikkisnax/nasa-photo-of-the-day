@@ -1,4 +1,6 @@
 // Read through the instructions in the README.md file to build your NASA app! Have fun <span role="img" aria-label='go!'>🚀</span>!
+// bootstrap- button - https://getbootstrap.com/docs/5.1/components/buttons/
+// styled comps - https://styled-components.com/docs/basics#animations 
 
 
 import React, { useState, useEffect } from "react";
